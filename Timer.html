@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+
+        body {
+            text-align: center;
+            padding: 100px 60px;
+            background: #90cbf3;
+            font-family: sans-serif;
+            font-weight: lighter;
+
+        }
+
+        #time  {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 400px;
+            background-color: rgb(245, 240, 240);
+            margin: auto;
+            margin-top: 30px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <h1 style="font-family: 'Courier New', Courier, monospace;">Countdown timer</h1>
+    <div id="time">
+         <h1 id="timer">5 minutes</h1>
+    </div>
+
+    <script>
+        function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#timer');
+    startTimer(fiveMinutes, display);
+};
+    </script>
+
+
+</body>
+
+</html>
